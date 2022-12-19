@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { decrement, increment } from './redux/reducers/counter';
+import Counter from './components/Counter';
 
 function App() {
   const {count} = useSelector((state) => state.counter);
@@ -12,16 +11,19 @@ function App() {
   console.log(preFlightChecklist);
   return (
     <div className="App">
-
+      <h1 className="text-3xl font-bold underline">
+        Project boiler plate by Eca
+      </h1>
+      <h2>List of technologies used</h2>
+        <ul>
+          <li>React</li>
+          <li>Vite</li>
+          <li>Redux Toolkit</li>
+          <li>Tailwind CSS</li>
+          <li>TypeScript</li>
+        </ul>
+      <Counter/>
       <div className="card">
-        <button onClick={() => dispatch(increment())}>
-          count is {count}
-        </button>
-        <button onClick={() => dispatch(decrement())}>
-          count is {count}
-        </button>
-        <p>
-        </p>
         <ol>
           {preFlightChecklist.map(item => <li>{item.title}</li>)}
         </ol>
