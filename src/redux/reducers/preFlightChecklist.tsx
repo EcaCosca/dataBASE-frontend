@@ -9,17 +9,17 @@ export const preFlightChecklistSlice = createSlice({
     create: (state, action) => {
       state.preFlightChecklist =  [...state.preFlightChecklist, {title: action.payload.title, id:new Date().getTime()+Math.floor(Math.random()*100), done:false}]  
     },
+    erase: (state, action) => {
+        state.preFlightChecklist = state.preFlightChecklist.filter(item => item.id !== action.payload)  
+    },
     update: (state, action) => {
         state.preFlightChecklist = state.preFlightChecklist.map(item => item.id === action.payload.id ? {...item, title: action.payload.title, done: action.payload.done} : item)  
-    },
-    delete: (state, action) => {
-        state.preFlightChecklist = state.preFlightChecklist.filter(item => item.id !== action.payload.id)  
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { create, update} = preFlightChecklistSlice.actions
+export const { create, erase,  update} = preFlightChecklistSlice.actions
 
 export default preFlightChecklistSlice.reducer
 

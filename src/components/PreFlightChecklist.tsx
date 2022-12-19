@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { create, update } from '../redux/reducers/preFlightChecklist';
+import { create, update, erase } from '../redux/reducers/preFlightChecklist';
 
 const PreFlightChecklist = () => {
     const {preFlightChecklist} = useSelector((state) => state.preFlightChecklist);
@@ -11,7 +11,13 @@ const PreFlightChecklist = () => {
         <h2>PreFlightChecklist</h2>
         <div className="card">
         <ol>
-          {preFlightChecklist.map(item => <li>{item.title}</li>)}
+          {preFlightChecklist.map(item => 
+            <li id={item.id}>
+                {item.title}
+                {item.id}
+                <button onClick={() => dispatch(erase(item.id))}>Erase</button>
+            </li>
+          )}
         </ol>
         <button onClick={() => dispatch(create(0))}>Add</button>
       </div>
