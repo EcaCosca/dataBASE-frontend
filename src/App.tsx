@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { decrement, increment } from './redux/reducers/counter';
 
 function App() {
-  // const [count, setCount] = useState(0)
   const {count} = useSelector((state) => state.counter);
   const {preFlightChecklist} = useSelector((state) => state.preFlightChecklist);
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function App() {
   console.log(preFlightChecklist);
   return (
     <div className="App">
-      
+
       <div className="card">
         <button onClick={() => dispatch(increment())}>
           count is {count}
